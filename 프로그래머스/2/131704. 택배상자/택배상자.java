@@ -1,27 +1,18 @@
 import java.util.*;
-
 class Solution {
     public int solution(int[] order) {
-        Stack<Integer> st = new Stack<>();
-        int index = 0;
-        int box = 1;
-
-        while (index < order.length) {
-            int target = order[index];
-
-            // 아직 넣지 않은 상자부터 필요한 번호까지 넣기
-            for (; box <= target; box++) {
-                st.push(box);
-            }
-
-            if (!st.isEmpty() && st.peek() == target) {
-                st.pop();
-                index++;
-            } else {
-                break;
+        int idx = 0;
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < order.length; i++){
+            stack.push(i+1);
+            while(!stack.isEmpty()){
+                if (stack.peek() == order[idx]){
+                    stack.pop();
+                    idx++;
+                } else break;
             }
         }
 
-        return index;
+        return idx;
     }
 }
