@@ -40,7 +40,7 @@ class Solution {
             int village = current[0];
             int time = current[1];
 
-            if (time != mintime[village]) {
+            if (time > mintime[village]) {
                 continue;
             }
 
